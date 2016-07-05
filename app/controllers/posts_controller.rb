@@ -14,6 +14,7 @@ class PostsController < ApplicationController
 
 	def edit
 		@post = Post.find(params[:id])
+
 		@categories = Category.all
 		@tags = Tag.all
 	end
@@ -33,9 +34,29 @@ class PostsController < ApplicationController
 	def update
 		@post = Post.find(params[:id])
 		@post.update(post_update_params)
+
 		@post.save
-		
-		redirect_to :back
+		if @post.save
+			flash[:notice] = "Post successfully created"
+
+			@relations = CategoriesPost.where(post_id: @post.id).all
+			if !@relations.nil?
+				@relations.each do |relation|
+					relation.destroy
+				end
+			end
+
+			if !params[:categories].nil?
+				params[:categories].each do |category|
+					CategoriesPost.create(post_id: @post.id, category_id: category)
+				end
+			end
+			redirect_to edit_post_path
+		else
+			@categories = Category.all
+			@tags = Tag.all
+			render 'edit'
+		end
 	end
 
 	def destroy

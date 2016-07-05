@@ -8,6 +8,7 @@
 	            <div class="title_left">
 	                <h3>
 	                    Posts
+	                    <a href="/admin/posts/new" class="btn btn-xs btn-success"><strong>+</strong> Add new</a>
 	                </h3>
 	            </div>
 	        </div>
@@ -36,6 +37,29 @@
 	<script type="text/javascript">
 	    $(document).ready(function () {
 	    	$(".select2").select2();
+
+			<% if flash[:notice] %>
+				new PNotify({
+	              	title: 'Success',
+	              	text: '<%= flash[:notice] %>',
+	              	type: 'success',
+	              	delay: 2000,
+	              	styling: 'bootstrap3'
+	          	});
+          	<% end %>
+
+          	<% if @post.errors.any? %>
+          		<% @post.errors.full_messages.each do |msg| %>
+					new PNotify({
+		              	title: 'Error',
+		              	text: '<%= msg %>. Update fail',
+		              	type: 'error',
+		              	hide: false,
+		              	delay: 3000,
+		              	styling: 'bootstrap3'
+		          	});
+          		<% end %>
+          	<% end %>
 	    })
 	</script>
 <% end %>

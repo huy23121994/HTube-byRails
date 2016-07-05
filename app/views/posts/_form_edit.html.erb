@@ -4,7 +4,7 @@
     <label class="control-label col-md-3 col-sm-3 col-xs-12">Title <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <%= f.text_field :title, class: "form-control col-md-7 col-xs-12", required: "required" %>
+      <%= f.text_field :title, class: "form-control col-md-7 col-xs-12" %>
     </div>
   </div>
   <div class="form-group">
@@ -25,7 +25,16 @@
     <div class="col-md-6 col-sm-6 col-xs-12">
         <select class="form-control select2 select2-hidden-accessible" name="categories[]" multiple data-placeholder="Select category" style="width: 100%;" tabindex="-1" aria-hidden="true">
           <% @categories.each do |category| %>
-            <option value="<%= category.id %>"><%= category.category %></option>
+            <option 
+              value="<%= category.id %>"
+              <% @post.categories.ids.each do |category_selected| %>
+                <% if category_selected == category.id %>
+                  selected="selected"
+                <% end %>
+              <% end %>
+            >
+              <%= category.category %>
+            </option>
           <% end %>
         </select>
     </div>
@@ -43,7 +52,7 @@
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12">Image preview</label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <%= f.text_field :img_preview, class: "form-control col-md-7 col-xs-12" %>
+      <%= f.text_field :img_preview, class: "form-control col-md-7 col-xs-12",required: "required" %>
       <img src="<%= @post.img_preview %>" alt="<%= @post.title+'\'s image' %>" width="200" style="margin-top: 10px">
     </div>
   </div>
