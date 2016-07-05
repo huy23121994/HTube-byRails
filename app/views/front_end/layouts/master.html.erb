@@ -1,0 +1,17 @@
+
+<% content_for :add_css do %>
+	<%= stylesheet_link_tag 'front_end' %>
+<% end %>
+
+<% content_for :content do %>
+
+	<%= render 'front_end/layouts/header' %>
+
+	<section class="container">
+		<%= yield :front_end_main %>
+	</section>
+
+	<%= render 'front_end/layouts/footer' %>
+
+<% end %>
+

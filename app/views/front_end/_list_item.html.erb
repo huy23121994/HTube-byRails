@@ -1,0 +1,21 @@
+<div class="row grid">
+	<% @posts.each do |post| %>
+	<div class="grid-item col-md-3 col-sm-4 col-xs-12">
+		<div class="wrapper">
+			<div class="img">
+				<a href="post/<%= post.id %>">
+					<img src="<%= post.img_preview %>" alt="<%= post.title %>">
+				</a>
+			</div>
+			<div class="content">
+				<h5><a href="post/<%= post.id %>"><%= post.title %></a></h5>
+				<p>
+					<i class="fa fa-folder-open"></i> :
+					<a href="#">Category</a>
+					<i class="fa fa-tags"></i> :<a href="#">Tag</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<% end %>
+</div>

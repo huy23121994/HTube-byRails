@@ -1,0 +1,59 @@
+<% provide(:title, @post.title + ' | HTube') %>
+
+<% content_for :front_end_main do %>
+
+	<section id="show-item">
+		<div class="row">
+			<!-- LEFT CONTENT -->
+			<div class="col-sm-8 left-content">
+				<div class="row header">
+					<h4><%= @post.title %></h4>
+					<p><%= @post.created_at %></p>
+				</div>
+				<div class="h_iframe">
+					<img class="ratio" src="http://placehold.it/16x9"/>
+	        		<iframe src="<%= @post.embed_link %>" frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div>
+			<!-- END LEFT CONTENT -->
+
+			<!-- RIGHT CONTENT -->
+			<div class="col-sm-4 right-content">
+				<div>
+					<h5>Description</h5>
+					<p><%= @post.description %></p>
+				</div>
+				<div>
+					<h5>Category</h5>
+					<p>
+						<a href="{{url('category/'.$category['slug'])}}">Categories</a>
+					</p>
+				</div>
+				<div>
+					<h5>Tags</h5>
+					<p>
+						<a href="{{url('tag/'.$tag['slug'])}}">Tags</a>
+					</p>
+				</div>
+				<div>
+					<h5>Related Posts</h5>
+					<div class="media">
+					  	<div class="media-left">
+					    	<a href="{{url('/item/'.$item_relate['slug'])}}">
+					      		<img class="media-object" src="<%= image_url("demo.jpg") %>" alt="title" width="100">
+					    	</a>
+					  	</div>
+					  	<div class="media-body">
+						  	<a href="{{url('/item/'.$item_relate['slug'])}}">
+						    	<h5 class="media-heading">Title</h5>
+					    	</a>
+					  	</div>
+					</div>
+				</div>
+				<!-- END RIGHT CONTENT -->
+			</div>
+		</div>
+	</section>
+<% end %>
+
+<% front_end_layout "master" %>

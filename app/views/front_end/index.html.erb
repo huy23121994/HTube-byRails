@@ -1,0 +1,26 @@
+<% provide(:title, "HTube | Home") %>
+
+<% content_for :add_meta do %>
+	<meta property="og:description" content="xxx" />
+	<meta property="og:type" content="article" />
+	<meta property="og:image" content="xxx" />
+<% end %>
+
+<% content_for :front_end_main do %>
+	<%= render 'front_end/list_item' %>
+<% end %>
+
+<% content_for :add_js do %>
+	<%= javascript_include_tag 'masonry.pkgd.min' %>
+	<%= javascript_include_tag 'imagesloaded.pkgd.min' %>
+	<script type="text/javascript">
+		$('section').imagesLoaded( function() {
+		  	$('.grid').masonry({
+			  	itemSelector: '.grid-item',
+			  	percentPosition: true
+			})
+		});
+	</script>
+<% end %>
+
+<% front_end_layout "master" %>
