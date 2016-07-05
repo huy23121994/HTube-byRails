@@ -61,7 +61,7 @@
 						            <tr>
 						                <td><a href="<%= edit_tag_path(tag.id) %>"><%= tag.tag_name %></a></td>
 						                <td><%= tag.slug %></td>
-						                <td>
+						                <td class="text-center">
 						                	<a href="<%= edit_tag_path(tag.id) %>">View</a> |
 						                	<a href="#" data-toggle="modal" data-id="<%= tag.id %>" data-target=".delete_comfirm">Delete</a>
 						                </td>
@@ -101,9 +101,21 @@
 	    $(document).ready(function () {
 	    	//DataTable
 	    	$('#list-item').DataTable();
+
+	    	// For delete modal
 	    	$('a[data-target=".delete_comfirm"]').click(function(){
 	    		$('a[data-method="delete"]').attr('href','tags/' + $(this).data('id'));
 	    	})
+
+	    	<% if flash[:notice] %>
+				new PNotify({
+	              	title: 'Success',
+	              	text: '<%= flash[:notice] %>',
+	              	type: 'success',
+	              	delay: 2000,
+	              	styling: 'bootstrap3'
+	          	});
+          	<% end %>
 	    })
 	</script>
 <% end %>

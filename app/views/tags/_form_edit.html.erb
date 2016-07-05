@@ -1,20 +1,5 @@
     
 <%= form_for @tag, html:{:class => "form-horizontal form-label-left", 'data-parsley-validate' => ''} do |f| %>
-    <!-- ERROR MESSAGES -->
-    <% if @tag.errors.any? %>
-      <div style="color: #E74C3C" class="form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <h4>Have <%= pluralize(@tag.errors.count, "error") %> prohibited this tag from being saved:</h4>
-          <ul>
-            <% @tag.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    <% end %>
-    <!-- END ERROR MESSAGES -->
 
   	<div class="form-group">
     	<label class="control-label col-md-3 col-sm-3 col-xs-12">Tag name <span class="required">*</span>

@@ -24,8 +24,8 @@ class TagsController < ApplicationController
 		
 		@tag.save
 		if @tag.save
-			flash[:notice] = "Post successfully updated"
-			redirect_to :back
+			flash[:notice] = "Tag successfully updated"
+			redirect_to edit_tag_path
 		else
 			render 'edit'
 		end
@@ -42,6 +42,7 @@ class TagsController < ApplicationController
 		
 		@tag.save
 		if @tag.save
+			flash[:notice] = "Tag successfully created"
 			redirect_to tags_path
 		else
 			@tags = Tag.all

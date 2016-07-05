@@ -35,4 +35,32 @@
 	</div>
 <% end %>'
 
+<% content_for :add_js do %>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			<% if flash[:notice] %>
+				new PNotify({
+	              	title: 'Success',
+	              	text: '<%= flash[:notice] %>',
+	              	type: 'success',
+	              	delay: 2000,
+	              	styling: 'bootstrap3'
+	          	});
+          	<% end %>
+
+          	<% if @tag.errors.any? %>
+          		<% @tag.errors.full_messages.each do |msg| %>
+					new PNotify({
+		              	title: 'Error',
+		              	text: '<%= msg %>',
+		              	type: 'error',
+		              	hide: false,
+		              	delay: 3000,
+		              	styling: 'bootstrap3'
+		          	});
+          		<% end %>
+          	<% end %>
+		})
+	</script>
+<% end %>
 <% back_end_layout "master" %>

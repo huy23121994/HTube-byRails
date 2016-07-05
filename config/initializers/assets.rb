@@ -36,3 +36,9 @@ Rails.application.config.assets.precompile += %w( select2.min.js )
 # Masonry Grid
 Rails.application.config.assets.precompile += %w( masonry.pkgd.min.js )
 Rails.application.config.assets.precompile += %w( imagesloaded.pkgd.min.js )
+
+# PNotify
+Rails.application.config.assets.precompile += %w( pnotify.css )
+Rails.application.config.assets.precompile += %w( pnotify.js )
+Rails.application.config.assets.precompile += %w( pnotify.buttons.css )
+Rails.application.config.assets.precompile += %w( pnotify.buttons.js )
