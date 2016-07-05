@@ -2,21 +2,31 @@
 <%= form_for @category, html:{:class => "form-horizontal form-label-left", 'data-parsley-validate' => ''} do |f| %>
 
   	<div class="form-group">
-    	<label class="control-label" for="first-name">Name <span class="required">*</span>
-    	</label>
-    	 <%= f.text_field :category, class: "form-control", required: "required" %>
-    	<p class="help-block">The name is how it appears on your site.</p>
+    	<label class="control-label col-md-3 col-sm-3 col-xs-12">Category name <span class="required">*</span></label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="text" name="category" class="form-control" value="<%= @category.category%>" required="required" />
+      </div>
   	</div>
   	<div class="form-group">
-    	<label class="control-label" for="last-name">Slug
-    	</label>
-    	 <%= f.text_field :slug, class: "form-control" %>
-    	<p class="help-block">The “slug” is the URL-friendly version of the name. Ex: If you enter "amazing-nails", url will be "domain.com/category/amazing-nails"</p>
+    	<label class="control-label col-md-3 col-sm-3 col-xs-12">Slug</label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="text" name="slug" value="<%= @category.slug%>" class="form-control"/>
+      </div>
   	</div>
+    <div class="form-group">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12">Created Time</label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <fieldset disabled>
+          <%= f.text_field :created_at, class: "form-control"%>
+        </fieldset>
+      </div>
+    </div>
   	<div class="ln_solid"></div>
   	<div class="form-group">
+      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
         <button type="submit" class="btn btn-success">Submit</button>
         <a type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target=".delete_comfirm"><i class="fa fa-trash"></i> Delete</a>
+      </div>
   	</div>
 
 <% end %>

@@ -16,14 +16,39 @@ class CategoriesController < ApplicationController
 	def update
 		@category = Category.find(params[:id])
  
-	    @category.update(category_params)
-	    redirect_to :back
+	    @category.category = params['category']
+		if params['slug'].empty?
+			@category.slug = params['category'].slugify_trim
+		else
+			@category.slug = params['slug'].slugify_trim
+		end
+		
+		@category.save
+		if @category.save
+			flash[:notice] = "Category successfully updated"
+			redirect_to edit_category_path
+		else
+			render 'edit'
+		end
 	end
 
 	def create
-		@category = Category.new(category_params)
+		@category = Category.new
+		@category.category = params['category']
+		if params['slug'].empty?
+			@category.slug = params['category'].slugify_trim
+		else
+			@category.slug = params['slug'].slugify_trim
+		end
+		
 		@category.save
-		redirect_to :back
+		if @category.save
+			flash[:notice] = "Category successfully created"
+			redirect_to categories_path
+		else
+			@categories = Category.all
+			render 'index'
+		end
 	end
 
 	def destroy
@@ -32,10 +57,5 @@ class CategoriesController < ApplicationController
 	 
 	  	redirect_to categories_path
 	end
-
-	private
-		def category_params
-			params.require(:category).permit(:category,:slug)
-		end
 
 end

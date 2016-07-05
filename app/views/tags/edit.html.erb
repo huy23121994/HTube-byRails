@@ -52,7 +52,7 @@
           		<% @tag.errors.full_messages.each do |msg| %>
 					new PNotify({
 		              	title: 'Error',
-		              	text: '<%= msg %>',
+		              	text: '<%= msg %>. Update fail',
 		              	type: 'error',
 		              	hide: false,
 		              	delay: 3000,

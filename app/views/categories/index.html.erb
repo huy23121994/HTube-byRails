@@ -105,6 +105,16 @@
 	    	$('a[data-target=".delete_comfirm"]').click(function(){
 	    		$('a[data-method="delete"]').attr('href','categories/' + $(this).data('id'));
 	    	})
+	    	
+	    	<% if flash[:notice] %>
+				new PNotify({
+	              	title: 'Success',
+	              	text: '<%= flash[:notice] %>',
+	              	type: 'success',
+	              	delay: 2000,
+	              	styling: 'bootstrap3'
+	          	});
+          	<% end %>
 	    })
 	</script>
 <% end %>

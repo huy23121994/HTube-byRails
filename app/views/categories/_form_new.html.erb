@@ -4,13 +4,23 @@
   	<div class="form-group">
     	<label class="control-label" for="first-name">Name <span class="required">*</span>
     	</label>
-    	 <%= f.text_field :category, class: "form-control", required: "required" %>
+      <input type="text" name="category" class="form-control" required="required" />
+      <% if @category.errors[:category].any? %>
+        <% @category.errors.messages[:category].each do |msg| %>
+          <p style="color: #E74C3C">Categories name <%= msg %></p>
+        <% end %>
+      <% end %>
     	<p class="help-block">The name is how it appears on your site.</p>
   	</div>
   	<div class="form-group">
     	<label class="control-label" for="last-name">Slug
     	</label>
-    	 <%= f.text_field :slug, class: "form-control" %>
+      <input type="text" name="slug" class="form-control" />
+      <% if @category.errors[:slug].any? %>
+        <% @category.errors.messages[:slug].each do |msg| %>
+          <p style="color: #E74C3C">Slug <%= msg %></p>
+        <% end %>
+      <% end %>
     	<p class="help-block">The “slug” is the URL-friendly version of the name. Ex: If you enter "amazing-nails", url will be "domain.com/category/amazing-nails"</p>
   	</div>
   	<div class="ln_solid"></div>
