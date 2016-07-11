@@ -44,7 +44,16 @@
     <div class="col-md-6 col-sm-6 col-xs-12">
         <select class="form-control select2 select2-hidden-accessible" name="tags[]" multiple data-placeholder="Select tag" style="width: 100%;" tabindex="-1" aria-hidden="true">
           <% @tags.each do |tag| %>
-            <option value="<%= tag.id %>"><%= tag.tag_name %></option>
+            <option
+              value="<%= tag.id %>"
+              <% @post.tags.ids.each do |tag_selected| %>
+                <% if tag_selected == tag.id%>
+                  selected="selected"
+                <% end %>
+              <% end %>  
+            >
+              <%= tag.tag_name %>
+            </option>
           <% end %>
         </select>
     </div>

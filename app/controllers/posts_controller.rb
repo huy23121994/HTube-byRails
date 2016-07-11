@@ -37,11 +37,11 @@ class PostsController < ApplicationController
 
 		@post.save
 		if @post.save
-			flash[:notice] = "Post successfully created"
+			flash[:notice] = "Post successfully updated"
 
-			@relations = CategoriesPost.where(post_id: @post.id).all
-			if !@relations.nil?
-				@relations.each do |relation|
+			@category_relations = CategoriesPost.where(post_id: @post.id).all
+			if !@category_relations.nil?
+				@category_relations.each do |relation|
 					relation.destroy
 				end
 			end
@@ -51,6 +51,20 @@ class PostsController < ApplicationController
 					CategoriesPost.create(post_id: @post.id, category_id: category)
 				end
 			end
+
+			@tag_relations = TagsPost.where(post_id: @post.id).all
+			if !@tag_relations.nil?
+				@tag_relations.each do |relation|
+					relation.destroy
+				end
+			end
+
+			if !params[:tags].nil?
+				params[:tags].each do |tag|
+					TagsPost.create(post_id: @post.id, tag_id: tag)
+				end
+			end
+
 			redirect_to edit_post_path
 		else
 			@categories = Category.all
