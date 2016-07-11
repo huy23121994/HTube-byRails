@@ -42,3 +42,11 @@ Rails.application.config.assets.precompile += %w( pnotify.css )
 Rails.application.config.assets.precompile += %w( pnotify.js )
 Rails.application.config.assets.precompile += %w( pnotify.buttons.css )
 Rails.application.config.assets.precompile += %w( pnotify.buttons.js )
+
+# Morris Chart
+Rails.application.config.assets.precompile += %w( raphael.min.js )
+Rails.application.config.assets.precompile += %w( morris.min.js )
+
+# Daterangepicker
+Rails.application.config.assets.precompile += %w( moment.min.js )
+Rails.application.config.assets.precompile += %w( daterangepicker.js )

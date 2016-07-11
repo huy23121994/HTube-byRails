@@ -79,6 +79,17 @@ $(document).ready(function() {
         setContentHeight();
     }).parent().addClass('active');
 
+    if (CURRENT_URL.search('posts') != -1 || CURRENT_URL.search('tags') != -1 || CURRENT_URL.search('categories') != -1) {
+        $SIDEBAR_MENU.find('li[data="posts"]').addClass('active').find('ul').slideDown(function() {
+            setContentHeight();
+        });
+    }
+    if (CURRENT_URL.search('users') != -1) {
+        $SIDEBAR_MENU.find('li[data="users"]').addClass('active').find('ul').slideDown(function() {
+            setContentHeight();
+        });
+    }
+
     // recompute content when resizing
     $(window).smartresize(function(){  
         setContentHeight();
@@ -134,9 +145,9 @@ $(document).ready(function() {
 // /Tooltip
 
 // Progressbar
-if ($(".progress .progress-bar")[0]) {
-    $('.progress .progress-bar').progressbar();
-}
+// if ($(".progress .progress-bar")[0]) {
+//     $('.progress .progress-bar').progressbar();
+// }
 // /Progressbar
 
 // Switchery
@@ -234,7 +245,7 @@ $(document).ready(function() {
 
 // NProgress
 if (typeof NProgress != 'undefined') {
-    $(document).on('page:fetch',   function() { NProgress.start(); });
+    $(document).on('page:fetch',   function() { NProgress.set(0.3); });
     $(document).on('page:change',  function() { NProgress.done(); });
     $(document).on('page:restore', function() { NProgress.remove(); });
 }

@@ -1,0 +1,24 @@
+<% provide(:title, "HTube | Sign up") %>
+
+<% content_for :back_end_main do %>
+	<div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <%= render 'form_login' %>
+          </section>
+        </div>
+
+        <div id="register" class="animate form registration_form">
+          <section class="login_content">
+            <%= render 'form_signup' %>
+          </section>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+<% user_login_layout %>

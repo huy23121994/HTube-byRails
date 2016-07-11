@@ -28,7 +28,11 @@ class PostsController < ApplicationController
 		params[:categories].each do |category|
 			CategoriesPost.create(post_id: @post.id, category_id: category)
 		end
-		redirect_to posts_path
+
+		params[:tags].each do |tag|
+			TagsPost.create(post_id: @post.id, tag_id: tag)
+		end
+		redirect_to edit_post_path
 	end
 
 	def update

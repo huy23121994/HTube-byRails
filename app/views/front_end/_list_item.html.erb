@@ -11,7 +11,9 @@
 				<h5><a href="post/<%= post.id %>"><%= post.title %></a></h5>
 				<p>
 					<i class="fa fa-folder-open"></i> :
-					<a href="#">Category</a>
+					<% post.categories.each do |category| %>
+						<a href="#"><%= category.category %> </a>
+					<% end %>
 					<i class="fa fa-tags"></i> :<a href="#">Tag</a>
 				</p>
 			</div>
