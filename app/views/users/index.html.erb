@@ -27,27 +27,33 @@
 						        <thead>
 						            <tr>
 						                <th>Username</th>
+						                <th>Full name</th>
 						                <th>Email</th>
-						                <th>Is Admin</th>
+						                <th>Address</th>
+						                <th>Role</th>
 						                <th width="140px">Created Time</th>
 						            </tr>
 						        </thead>
 						        <tfoot>
 						            <tr>
 						                <th>Username</th>
+						                <th>Full name</th>
 						                <th>Email</th>
-						                <th>Is Admin</th>
+						                <th>Address</th>
+						                <th>Role</th>
 						                <th>Created Time</th>
 						            </tr>
 						        </tfoot>
 						        <tbody style="text-transform: capitalize;">
 						        <% @users.each do |user| %>
 						            <tr>
-						                <td><a href="<%= user_path(user) %>">
+						                <td><a href="<%= user_path(user) %>" style="text-decoration: underline; color: #03A9F4">
 						                	<%= user.username %>
 						                </a></td>
+						                <td><%= user.fullname %></td>
 						                <td><%= user.email %></td>
-						                <td><%= user.isAdmin %></td>
+						                <td><%= user.address %></td>
+						                <td><%= user.role %></td>
 						                <td><%= user.created_at %></td>
 						            </tr>
 						        <% end %>

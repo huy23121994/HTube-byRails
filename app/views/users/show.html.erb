@@ -32,20 +32,27 @@
                       <h3><%= @user.username %></h3>
 
                       <ul class="list-unstyled user_data">
-                        <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
-                        </li>
-
                         <li>
-                          <i class="fa fa-briefcase user-profile-icon"></i> Software Engineer
+                          <i class="fa fa-user user-profile-icon"></i> <%= @user.fullname %>
                         </li>
-
-                        <li class="m-top-xs">
-                          <i class="fa fa-external-link user-profile-icon"></i>
-                          <a href="http://www.kimlabs.com/profile/" target="_blank"><%= @user.email %></a>
+                        <% if !@user.email.nil? %>
+                          <li>
+                            <i class="fa fa-envelope user-profile-icon"></i>
+                            <a href="#"><%= @user.email %></a>
+                          </li>
+                        <% end %>
+                        <% if !@user.address.nil? %>
+                          <li>
+                            <i class="fa fa-map-marker user-profile-icon"></i> <%= @user.address %>
+                          </li>
+                        <% end %>
+                        <li>
+                          <i class="fa fa-cogs user-profile-icon"></i> Role : <%= @user.role %>
                         </li>
                       </ul>
 
-                      <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+                      <button type="button" class="btn btn-success" data-toggle="modal" data-target=".user_form_edit"><i class="fa fa-edit m-right-xs"></i> Edit Profile</button>
+                      <%= render 'form_edit' %>
 
                     </div>
                     <div class="col-md-9 col-sm-9 col-xs-12">
@@ -68,8 +75,6 @@
                       <div class="" role="tabpanel" data-example-id="togglable-tabs">
                         <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                           <li role="presentation" class="active"><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Projects Worked on</a>
-                          </li>
-                          <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Profile</a>
                           </li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
@@ -135,10 +140,6 @@
                             </table>
                             <!-- end user projects -->
 
-                          </div>
-                          <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
-                            <p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui
-                              photo booth letterpress, commodo enim craft beer mlkshk </p>
                           </div>
                         </div>
                       </div>

@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 		params[:tags].each do |tag|
 			TagsPost.create(post_id: @post.id, tag_id: tag)
 		end
-		redirect_to edit_post_path
+		redirect_to edit_post_path(@post)
 	end
 
 	def update
