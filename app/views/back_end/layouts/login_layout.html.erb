@@ -8,7 +8,25 @@
 
 <% content_for :content do %>
 
-	<%= yield :back_end_main %>
+	<div>
+      <div class="login_wrapper">
+        <div class="form">
+          <section class="login_content">
+
+				<%= yield :main %>
+
+			    <div class="clearfix"></div>
+			    <br>
+
+			    <div>
+			      <h1 style="position: relative;"><i class="fa fa-paw"></i> HTube!</h1>
+			      <p>©2016 All Rights Reserved. Privacy and Terms</p>
+			    </div>
+			  </div>
+          </section>
+        </div>
+      </div>
+    </div>
 
 <% end %>
 

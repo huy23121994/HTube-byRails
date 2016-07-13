@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, path: '/admin/users', only: [:index, :create, :show, :edit, :update, :destroy]
 
   get '/sign-up' => 'users#new'
+  get '/sign-in' => 'sessions#new'
   get 'post/:id' => 'front_end#show_item'
   get 'admin' => 'back_end#index'
 
