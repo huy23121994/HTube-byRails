@@ -30,7 +30,7 @@
       <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password', 'data-parsley-equalto' => "#user_password", required: 'required' %>
     </div>
     <div>
-      <button class="btn btn-default submit">Submit</button>
+      <button class="btn btn-success submit">Sign up</button>
     </div>
   <% end %>
 
@@ -38,7 +38,7 @@
 
     <div class="separator">
       <p class="change_link">Already a member ?
-        <a href="/sign-in"> Sign in </a>
+        <a href="/sign-in" class="text-primary"> <u>Sign in</u> </a>
       </p>
   <% end %>
 

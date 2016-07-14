@@ -2,6 +2,7 @@
 <% content_for :add_css do %>
 	<%= stylesheet_link_tag 'back_end' %>
 	<%= stylesheet_link_tag 'animate' %>
+	<%= stylesheet_link_tag 'green' %>
 <% end %>
 
 <% provide(:body_class, "login") %>
@@ -33,4 +34,5 @@
 <% content_for :add_js do %>
 	<%= javascript_include_tag 'back_end', "data-turbolinks-track" => true %>
 	<%= javascript_include_tag 'parsley.min'%>
+	<%= javascript_include_tag 'icheck.min'%>
 <% end %>

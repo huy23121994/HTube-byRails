@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
   	if user
 	  	if user.authenticate(params[:session][:password])
 	  		sign_in user
+	  		params[:session][:remember_me] == '1' ? remember(user) : forget(user)
 	  		redirect_to user
 	  	else
 	  		flash[:danger] = 'Password is not correct!'
@@ -19,7 +20,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    sign_out
+    sign_out if signed_in?
     redirect_to root_url
   end
 

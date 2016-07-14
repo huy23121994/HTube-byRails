@@ -50,3 +50,7 @@ Rails.application.config.assets.precompile += %w( morris.min.js )
 # Daterangepicker
 Rails.application.config.assets.precompile += %w( moment.min.js )
 Rails.application.config.assets.precompile += %w( daterangepicker.js )
+
+# Icheck
+Rails.application.config.assets.precompile += %w( icheck.min.js )
+Rails.application.config.assets.precompile += %w( green.css )

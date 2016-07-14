@@ -14,13 +14,17 @@
 
 	  <div>
 	  	<%= f.text_field :username, class: 'form-control', placeholder: 'Username', required: 'required' %>
-	    <!-- <input type="text" class="form-control" placeholder="Username" required=""> -->
 	  </div>
 	  <div>
 	  	<%= f.password_field :password, class: 'form-control', placeholder: 'Password', required: 'required' %>
-	    <!-- <input type="password" class="form-control" placeholder="Password" required=""> -->
 	  </div>
-	  <div>
+	  <div class="checkbox text-left">
+	  	<label style="padding-left: 0">
+		  	<%= f.check_box :remember_me, class: 'flat' %>
+	        Remember me on this computer
+	  	</label>
+	  </div>
+	  <div class="text-center">
 	    <!-- <a class="btn btn-default submit" href="index.html">Log in</a> -->
 	    <%= f.submit 'Sign in', class: 'btn btn-success submit' %>
 	    <!-- <a class="reset_pass" href="#">Lost your password?</a> -->
@@ -31,7 +35,7 @@
 
 	  <div class="separator">
 	    <p class="change_link">New to site?
-	      <a href="/sign-up"> Create Account </a>
+	      <a href="/sign-up" class="text-primary"> <u>Create Account</u> </a>
 	    </p>
 <% end %>
 <% user_login_layout %>
