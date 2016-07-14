@@ -156,6 +156,29 @@
 <% content_for :add_js do %>
 	<script type="text/javascript">
 	    $(document).ready(function () {
+
+        <% if flash[:success]%>
+          new PNotify({
+              title: 'Success',
+              text: '<%= flash[:success] %>',
+              type: 'success',
+              delay: 2000,
+              styling: 'bootstrap3'
+          });
+        <% end %>
+
+        <% if @user.errors.any? %>
+          <% @user.errors.full_messages.each do |msg| %>
+            new PNotify({
+                title: 'Error',
+                text: '<%= msg %>. Update fail',
+                type: 'error',
+                hide: false,
+                styling: 'bootstrap3'
+            });
+          <% end %>
+        <% end %>
+
 	    	Morris.Bar({
 	          element: 'graph_bar',
 	          data: [

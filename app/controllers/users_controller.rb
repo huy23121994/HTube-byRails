@@ -27,8 +27,12 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		@user.update(user_update_params)
-		@user.save
-		redirect_to :back
+		if @user.save
+			flash[:success] = "Infomation successfully updated"
+			redirect_to :back
+		else
+			render 'show'
+		end
 	end
 
 	private
@@ -37,7 +41,7 @@ class UsersController < ApplicationController
 		end
 
 		def user_update_params
-			params.require(:user).permit(:fullname,:email,:role,:address)
+			params.require(:user).permit(:fullname,:email,:password,:role,:address)
 		end
 
 end
