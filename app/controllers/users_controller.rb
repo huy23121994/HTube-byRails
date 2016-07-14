@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	before_action :signed_in_user, only: [:index,:show,:create,:update]
 
 	def index
 		@users = User.all
@@ -34,7 +35,9 @@ class UsersController < ApplicationController
 		def user_create_params
 			params.require(:user).permit(:username,:email,:password,:password_confirmation)
 		end
+
 		def user_update_params
 			params.require(:user).permit(:fullname,:email,:role,:address)
 		end
+
 end

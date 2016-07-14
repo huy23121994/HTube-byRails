@@ -40,5 +40,13 @@ module SessionsHelper
 		session.delete(:user_id)
 		@current_user = nil
 	end
+	
+	# Confirms a logged-in user.
+    def signed_in_user
+      unless signed_in?
+        flash[:danger] = "Please log in."
+        redirect_to sign_in_url
+      end
+    end
 
 end
