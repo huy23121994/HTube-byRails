@@ -1,18 +1,22 @@
 <% provide(:title, "HTube | Sign in") %>
 
 <% content_for :main do %>
-	<form data-parsley-validate>
+	<%= form_for :session, url: sign_in_path, html:{'data-parsley-validate' => ''} do |f| %>
 	  <h1>Login Form</h1>
 	  <div>
-	    <input type="text" class="form-control" placeholder="Username" required="">
+	  	<%= f.text_field :username, class: 'form-control', placeholder: 'Username', required: 'required' %>
+	    <!-- <input type="text" class="form-control" placeholder="Username" required=""> -->
 	  </div>
 	  <div>
-	    <input type="password" class="form-control" placeholder="Password" required="">
+	  	<%= f.password_field :password, class: 'form-control', placeholder: 'Password', required: 'required' %>
+	    <!-- <input type="password" class="form-control" placeholder="Password" required=""> -->
 	  </div>
 	  <div>
-	    <a class="btn btn-default submit" href="index.html">Log in</a>
-	    <a class="reset_pass" href="#">Lost your password?</a>
+	    <!-- <a class="btn btn-default submit" href="index.html">Log in</a> -->
+	    <%= f.submit 'Sign in', class: 'btn btn-success submit' %>
+	    <!-- <a class="reset_pass" href="#">Lost your password?</a> -->
 	  </div>
+	 <% end %>
 
 	  <div class="clearfix"></div>
 

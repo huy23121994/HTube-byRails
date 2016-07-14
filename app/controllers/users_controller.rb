@@ -26,7 +26,6 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		@user.update(user_update_params)
-		# byebug
 		@user.save
 		redirect_to :back
 	end
