@@ -3,6 +3,15 @@
 <% content_for :main do %>
 	<%= form_for :session, url: sign_in_path, html:{'data-parsley-validate' => ''} do |f| %>
 	  <h1>Login Form</h1>
+
+	  <% if flash[:danger] %>
+	    <div class="text-left">
+	        <ul>
+	        	<li><%= flash[:danger] %></li>
+	        </ul>
+	    </div>
+	  <% end %>
+
 	  <div>
 	  	<%= f.text_field :username, class: 'form-control', placeholder: 'Username', required: 'required' %>
 	    <!-- <input type="text" class="form-control" placeholder="Username" required=""> -->
