@@ -24,6 +24,9 @@ class PostsController < ApplicationController
 		@post = Post.new(post_params)
 		@post.embed_link = get_embed_link(params['link_video'])
 		@post.img_preview = get_img_video_link(params['link_video'])
+
+		post_next_id = (Post.last.id + 1).to_s
+		@post.slug = post_last_id + '-' + params['post']['title'].slugify_trim
 		@post.save
 		
 		params[:categories].each do |category|
@@ -39,6 +42,11 @@ class PostsController < ApplicationController
 	def update
 		@post = Post.find(params[:id])
 		@post.update(post_update_params)
+		if params['post']['slug'].empty?
+			@post.slug = @post.id.to_s + '-' + params['post']['title'].slugify_trim
+		else
+			@post.slug = params['post']['slug'].slugify_trim
+		end
 
 		@post.save
 		if @post.save

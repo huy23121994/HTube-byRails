@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   post '/sign-in' => 'sessions#create'
   get '/sign-out' => 'sessions#destroy'
   
-  get 'post/:id' => 'front_end#show_item'
+  get 'post/:slug' => 'front_end#show_item'
+  get 'category/:slug' => 'front_end#category'
+  get 'tag/:slug' => 'front_end#tag'
   get 'admin' => 'back_end#index'
 
 end
