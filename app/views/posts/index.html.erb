@@ -46,11 +46,15 @@
 						        <tbody style="text-transform: capitalize;">
 						        <% @posts.each do |post| %>
 						            <tr>
-						                <td><a href="<%= edit_post_path(post) %>">
-						                	<%= post.title %>
+						                <td><a href="<%= edit_post_path(post) %>" class="text-primary">
+						                	<u><%= post.title %></u>
 						                </a></td>
 						                <td><%= post.description %></td>
-						                <td><%= post.user_id %></td>
+						                <td>
+							                <a href="<%= user_path(post.user) %>" class="text-primary">
+							                	<u><%= post.user.username %></u>
+							                </a>
+						                </td>
 						                <td><%= post.created_at %></td>
 						            </tr>
 						        <% end %>

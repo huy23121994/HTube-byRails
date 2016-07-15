@@ -59,11 +59,13 @@
 						        <tbody>
 						        	<% @categories.each do |category| %>
 						            <tr>
-						                <td><a href="<%= edit_category_path(category.id) %>"><%= category.category %></a></td>
+						                <td><a href="<%= edit_category_path(category.id) %>" class="text-primary">
+						                	<u> <%= category.category %></u>
+						                </a></td>
 						                <td><%= category.slug %></td>
 						                <td>
-						                	<a href="<%= edit_category_path(category.id) %>">View</a> |
-						                	<a href="#" data-toggle="modal" data-id="<%= category.id %>" data-target=".delete_comfirm">Delete</a>
+						                	<a href="<%= edit_category_path(category.id) %>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> View</a>
+						                	<a href="#" data-toggle="modal" data-id="<%= category.id %>" data-target=".delete_comfirm" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>
 						                </td>
 						            </tr>
 						            <% end %>

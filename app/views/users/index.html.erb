@@ -47,8 +47,8 @@
 						        <tbody style="text-transform: capitalize;">
 						        <% @users.each do |user| %>
 						            <tr>
-						                <td><a href="<%= user_path(user) %>" style="text-decoration: underline; color: #1ABB9C">
-						                	<%= user.username %>
+						                <td><a href="<%= user_path(user) %>" class="text-primary">
+						                	<u><%= user.username %></u>
 						                </a></td>
 						                <td><%= user.fullname %></td>
 						                <td><%= user.email %></td>

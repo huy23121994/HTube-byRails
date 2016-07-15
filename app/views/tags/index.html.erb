@@ -59,11 +59,15 @@
 						        <tbody>
 						        	<% @tags.each do |tag| %>
 						            <tr>
-						                <td><a href="<%= edit_tag_path(tag.id) %>"><%= tag.tag_name %></a></td>
+						                <td>
+						                	<a href="<%= edit_tag_path(tag.id) %>" class="text-primary">
+						                		<u> <%= tag.tag_name %></u>
+						                	</a>
+						                </td>
 						                <td><%= tag.slug %></td>
 						                <td class="text-center">
-						                	<a href="<%= edit_tag_path(tag.id) %>">View</a> |
-						                	<a href="#" data-toggle="modal" data-id="<%= tag.id %>" data-target=".delete_comfirm">Delete</a>
+						                	<a href="<%= edit_tag_path(tag.id) %>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> View</a>
+						                	<a href="#" data-toggle="modal" data-id="<%= tag.id %>" data-target=".delete_comfirm" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>
 						                </td>
 						            </tr>
 						            <% end %>

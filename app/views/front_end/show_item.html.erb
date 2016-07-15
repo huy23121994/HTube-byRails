@@ -26,13 +26,17 @@
 				<div>
 					<h5>Category</h5>
 					<p>
-						<a href="{{url('category/'.$category['slug'])}}">Categories</a>
+						<% @post.categories.each do |category| %>
+							<a href="/category/<%= category.slug %>"><%= category.category %></a>
+						<% end %>
 					</p>
 				</div>
 				<div>
 					<h5>Tags</h5>
 					<p>
-						<a href="{{url('tag/'.$tag['slug'])}}">Tags</a>
+						<% @post.tags.each do |tag| %>
+							<a href="/tag/<%= tag.slug %>"><%= tag.tag_name %></a>
+						<% end %>
 					</p>
 				</div>
 				<div>

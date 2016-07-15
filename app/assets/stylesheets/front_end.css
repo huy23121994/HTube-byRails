@@ -100,7 +100,7 @@ section#show-item .left-content .header{
     color: #757575;
 }
 section#show-item .left-content .header h4{
-	color: #BB2156;
+	color: #CC3D10;
     font-weight: bold;
 }
 section#show-item .right-content>div{
@@ -117,12 +117,11 @@ section#show-item .right-content{
 	color: #3A3A3A;
 }
 section#show-item .right-content .media{
-	color: #BB2156;
 	margin: 20px 0;
 }
 
 section#show-item .right-content .media a{
-	color: #BB2156;
+	color: #CC3D10;
 	text-decoration: none;
 }
 .navbar-default .navbar-brand{
