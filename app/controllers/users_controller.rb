@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@user.update(user_update_params)
 		if @user.save
-			flash[:success] = "Infomation successfully updated"
+			flash[:success] = "Profile successfully updated"
 			redirect_to :back
 		else
 			render 'show'

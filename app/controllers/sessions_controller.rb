@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 	  	if user.authenticate(params[:session][:password])
 	  		sign_in user
 	  		params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-	  		redirect_to root_url
+	  		redirect_back_or user
 	  	else
 	  		flash[:danger] = 'Password is not correct!'
 	  		redirect_to :back
