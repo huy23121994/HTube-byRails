@@ -2,18 +2,18 @@ class FrontEndController < ApplicationController
   before_action :generate_categories
 
   def index
-  	@posts = Post.all
+    @posts = custom_paginate(Post.all)
   end
 
   def category
   	category = Category.find_by(slug: params[:slug])
-  	@posts = category.posts
+  	@posts = custom_paginate(category.posts)
   	render 'index'
   end
 
   def tag
     tag = Tag.find_by(slug: params[:slug])
-    @posts = tag.posts
+    @posts = custom_paginate(tag.posts)
     render 'index'
   end
 
@@ -25,4 +25,7 @@ class FrontEndController < ApplicationController
   	def generate_categories
   		@categories = Category.all
   	end
+    def custom_paginate(items)
+      items.paginate(:page => params[:page], :per_page => 2)
+    end
 end

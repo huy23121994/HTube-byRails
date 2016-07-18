@@ -8,6 +8,7 @@
 
 <% content_for :front_end_main do %>
 	<%= render 'front_end/list_item' %>
+	<%= will_paginate @posts %>
 <% end %>
 
 <% content_for :add_js do %>
