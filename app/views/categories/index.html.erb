@@ -59,7 +59,7 @@
 						        <tbody>
 						        	<% @categories.each do |category| %>
 						            <tr>
-						                <td><a href="<%= edit_category_path(category.id) %>" class="text-primary">
+						                <td><a href="<%= edit_category_path(category.id) %>" class="text-success">
 						                	<u> <%= category.category %></u>
 						                </a></td>
 						                <td><%= category.slug %></td>
@@ -120,4 +120,4 @@
 	    })
 	</script>
 <% end %>
-<% back_end_layout "master" %>
+<% extends_layout "back_end/layouts/master" %>

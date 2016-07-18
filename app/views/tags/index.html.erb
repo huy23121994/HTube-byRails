@@ -60,7 +60,7 @@
 						        	<% @tags.each do |tag| %>
 						            <tr>
 						                <td>
-						                	<a href="<%= edit_tag_path(tag.id) %>" class="text-primary">
+						                	<a href="<%= edit_tag_path(tag.id) %>" class="text-success">
 						                		<u> <%= tag.tag_name %></u>
 						                	</a>
 						                </td>
@@ -123,4 +123,5 @@
 	    })
 	</script>
 <% end %>
-<% back_end_layout "master" %>
+
+<% extends_layout "back_end/layouts/master" %>

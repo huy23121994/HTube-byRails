@@ -46,12 +46,12 @@
 						        <tbody style="text-transform: capitalize;">
 						        <% @posts.each do |post| %>
 						            <tr>
-						                <td><a href="<%= edit_post_path(post) %>" class="text-primary">
+						                <td><a href="<%= edit_post_path(post) %>" class="text-success">
 						                	<u><%= post.title %></u>
 						                </a></td>
 						                <td><%= post.description %></td>
 						                <td>
-							                <a href="<%= user_path(post.user) %>" class="text-primary">
+							                <a href="<%= user_path(post.user) %>" class="text-success">
 							                	<u><%= post.user.username %></u>
 							                </a>
 						                </td>
@@ -76,4 +76,5 @@
 	    })
 	</script>
 <% end %>
-<% back_end_layout "master" %>
+
+<% extends_layout "back_end/layouts/master" %>
