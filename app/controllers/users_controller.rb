@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :signed_in_user, only: [:index,:show,:create,:update]
+	before_action :signed_in_user, only: [:index,:show,:update]
 
 	def index
 		@users = User.all
@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_create_params)
 		@user.role = 'User'
-
 		if @user.save
 			redirect_to @user
 		else

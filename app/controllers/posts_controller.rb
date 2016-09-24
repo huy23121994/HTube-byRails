@@ -25,16 +25,26 @@ class PostsController < ApplicationController
 		@post.embed_link = get_embed_link(params['link_video'])
 		@post.img_preview = get_img_video_link(params['link_video'])
 
-		post_next_id = (Post.last.id + 1).to_s
-		@post.slug = post_last_id + '-' + params['post']['title'].slugify_trim
-		@post.save
-		
-		params[:categories].each do |category|
-			CategoriesPost.create(post_id: @post.id, category_id: category)
+		if Post.last.nil?
+			@post.slug =  '1-' + params['post']['title'].slugify_trim
+		else
+			post_new_id = (Post.last.id + 1).to_s
+			@post.slug = post_new_id + '-' + params['post']['title'].slugify_trim
 		end
 
-		params[:tags].each do |tag|
-			TagsPost.create(post_id: @post.id, tag_id: tag)
+		@post.user_id = current_user.id
+		@post.save
+		
+		if !params[:categories].nil?
+			params[:categories].each do |category|
+				CategoriesPost.create(post_id: @post.id, category_id: category)
+			end
+		end
+
+		if !params[:tags].nil?
+			params[:tags].each do |tag|
+				TagsPost.create(post_id: @post.id, tag_id: tag)
+			end
 		end
 		redirect_to edit_post_path(@post)
 	end
