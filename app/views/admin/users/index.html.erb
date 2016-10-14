@@ -47,7 +47,7 @@
 						        <tbody style="text-transform: capitalize;">
 						        <% @users.each do |user| %>
 						            <tr>
-						                <td><a href="<%= user_path(user) %>" class="text-success">
+						                <td><a href="<%= admin_user_path(user) %>" class="text-success">
 						                	<u><%= user.username %></u>
 						                </a></td>
 						                <td><%= user.fullname %></td>
@@ -77,4 +77,4 @@
 	</script>
 <% end %>
 
-<% extends_layout "back_end/layouts/master" %>
+<% extends_layout "admin/layouts/master" %>

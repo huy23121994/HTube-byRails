@@ -13,13 +13,13 @@
 <% content_for :content do %>
 	<div class="container body">
 		<div class="main_container">
-			<%= render 'back_end/layouts/sidebar' %>
+			<%= render 'admin/layouts/sidebar' %>
 
-			<%= render 'back_end/layouts/top_nav' %>
+			<%= render 'admin/layouts/top_nav' %>
 
 			<%= yield :back_end_main %>
 
-			<%= render 'back_end/layouts/footer' %>
+			<%= render 'admin/layouts/footer' %>
 		</div>
 	</div>
 <% end %>

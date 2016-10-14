@@ -9,14 +9,14 @@ Rails.application.routes.draw do
     resources :users, path: 'users', only: [:index, :create, :show, :edit, :update, :destroy]
   end
 
-  get '/sign-up' => 'users#new'
-  get '/sign-in' => 'sessions#new'
+  get '/sign-up' => 'admin/users#new'
+  get '/sign-in' => 'sessions#view_sign_in'
   post '/sign-in' => 'sessions#create'
   get '/sign-out' => 'sessions#destroy'
   
-  get 'post/:slug' => 'front_end#show_item'
-  get 'category/:slug' => 'front_end#category'
-  get 'tag/:slug' => 'front_end#tag'
-  get 'admin' => 'back_end#index'
+  get 'post/:slug' => 'front_end#show_item', as: 'post'
+  get 'category/:slug' => 'front_end#category', as: 'category'
+  get 'tag/:slug' => 'front_end#tag', as: 'tag'
+  get 'admin' => 'admin/users#index'
 
 end

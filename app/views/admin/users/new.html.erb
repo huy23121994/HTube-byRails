@@ -1,7 +1,7 @@
 <% provide(:title, "HTube | Sign up") %>
 
 <% content_for :main do %>
-	<%= form_for @user, html:{'data-parsley-validate' => ''} do |f| %>
+	<%= form_for [:admin, @user], html:{'data-parsley-validate' => ''} do |f| %>
     <h1>Create Account</h1>
 
     <% if @user.errors.any? %>
@@ -42,4 +42,4 @@
       </p>
   <% end %>
 
-<% extends_layout "back_end/layouts/login_layout" %>
+<% extends_layout "admin/layouts/login_layout" %>

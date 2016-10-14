@@ -32,16 +32,18 @@
                       <h3><%= @user.username %></h3>
 
                       <ul class="list-unstyled user_data">
-                        <li>
-                          <i class="fa fa-user user-profile-icon"></i> <%= @user.fullname %>
-                        </li>
-                        <% if !@user.email.nil? %>
+                        <% if @user.fullname != '' %>
+                          <li>
+                            <i class="fa fa-user user-profile-icon"></i> <%= @user.fullname %>
+                          </li>
+                        <% end %>
+                        <% if @user.email != ''%>
                           <li>
                             <i class="fa fa-envelope user-profile-icon"></i>
                             <a href="#"><%= @user.email %></a>
                           </li>
                         <% end %>
-                        <% if !@user.address.nil? %>
+                        <% if @user.address != ''%>
                           <li>
                             <i class="fa fa-map-marker user-profile-icon"></i> <%= @user.address %>
                           </li>
@@ -283,4 +285,4 @@
     <!-- /datepicker -->
 <% end %>
 
-<% extends_layout "back_end/layouts/master" %>
+<% extends_layout "admin/layouts/master" %>

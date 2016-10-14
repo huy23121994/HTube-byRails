@@ -1,4 +1,4 @@
-<%= form_for @post, html:{:class => "form-horizontal form-label-left", 'data-parsley-validate' => ''} do |f| %>
+<%= form_for [:admin, @post], html:{:class => "form-horizontal form-label-left", 'data-parsley-validate' => ''} do |f| %>
 
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12">Title <span class="required">*</span>
@@ -92,7 +92,7 @@
       </div>
       <div class="modal-body text-center">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <a href="<%= post_path(@post.id) %>" type="button" class="btn btn-success" data-method="delete">Yes, I'm sure</a>
+        <a href="<%= admin_post_path(@post.id) %>" type="button" class="btn btn-success" data-method="delete">Yes, I'm sure</a>
       </div>
 
     </div>

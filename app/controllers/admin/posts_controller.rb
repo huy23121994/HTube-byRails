@@ -46,7 +46,7 @@ class Admin::PostsController < ApplicationController
 				TagsPost.create(post_id: @post.id, tag_id: tag)
 			end
 		end
-		redirect_to edit_post_path(@post)
+		redirect_to edit_admin_post_path(@post)
 	end
 
 	def update
@@ -88,7 +88,7 @@ class Admin::PostsController < ApplicationController
 				end
 			end
 
-			redirect_to edit_post_path
+			redirect_to edit_admin_post_path
 		else
 			@categories = Category.all
 			@tags = Tag.all
@@ -100,7 +100,7 @@ class Admin::PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		@post.destroy
 
-		redirect_to posts_path
+		redirect_to admin_posts_path
 	end
 
 	private

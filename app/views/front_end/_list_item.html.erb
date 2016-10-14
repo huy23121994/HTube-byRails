@@ -3,20 +3,20 @@
 	<div class="grid-item col-md-3 col-sm-4 col-xs-12">
 		<div class="wrapper">
 			<div class="img">
-				<a href="/post/<%= post.slug %>">
+				<a href="<%= post_path(post.slug) %>">
 					<img src="<%= post.img_preview %>" alt="<%= post.title %>">
 				</a>
 			</div>
 			<div class="content">
-				<h5><a href="/post/<%= post.slug %>"><%= post.title %></a></h5>
+				<h5><a href="<%= post_path(post.slug) %>"><%= post.title %></a></h5>
 				<p>
 					<i class="fa fa-folder-open"></i> :
 					<% post.categories.each do |category| %>
-						<a href="/category/<%= category.slug %>"><%= category.category %> </a>
+						<a href="<%= category_path(category.slug) %>"><%= category.category %> </a>
 					<% end %>
 					<% post.tags.each do |tag| %>
 					<i class="fa fa-tags"></i> :
-						<a href="/tag/<%= tag.slug %>"><%= tag.tag_name %></a>
+						<a href="<%= tag_path(tag.slug) %>"><%= tag.tag_name %></a>
 					<% end %>
 				</p>
 			</div>
