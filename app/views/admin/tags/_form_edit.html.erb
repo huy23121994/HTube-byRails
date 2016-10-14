@@ -1,18 +1,20 @@
-
-<%= form_for @category, html:{:class => "form-horizontal form-label-left", 'data-parsley-validate' => ''} do |f| %>
+    
+<%= form_for [:admin, @tag], html:{:class => "form-horizontal form-label-left", 'data-parsley-validate' => ''} do |f| %>
 
   	<div class="form-group">
-    	<label class="control-label col-md-3 col-sm-3 col-xs-12">Category name <span class="required">*</span></label>
+    	<label class="control-label col-md-3 col-sm-3 col-xs-12">Tag name <span class="required">*</span>
+    	</label>
       <div class="col-md-6 col-sm-6 col-xs-12">
-        <input type="text" name="category" class="form-control" value="<%= @category.category%>" required="required" />
+        <input type="text" name="tag_name" class="form-control" value="<%= @tag.tag_name%>" required="required" />
       </div>
   	</div>
-  	<div class="form-group">
-    	<label class="control-label col-md-3 col-sm-3 col-xs-12">Slug</label>
+    <div class="form-group">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12">Slug
+      </label>
       <div class="col-md-6 col-sm-6 col-xs-12">
-        <input type="text" name="slug" value="<%= @category.slug%>" class="form-control"/>
+        <input type="text" name="slug" value="<%= @tag.slug%>" class="form-control"/>
       </div>
-  	</div>
+    </div>
     <div class="form-group">
       <label class="control-label col-md-3 col-sm-3 col-xs-12">Created Time</label>
       <div class="col-md-6 col-sm-6 col-xs-12">
@@ -24,7 +26,7 @@
   	<div class="ln_solid"></div>
   	<div class="form-group">
       <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success">Update</button>
         <a type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target=".delete_comfirm"><i class="fa fa-trash"></i> Delete</a>
       </div>
   	</div>
@@ -42,7 +44,7 @@
       </div>
       <div class="modal-body text-center">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <a href="<%= category_path(@category.id) %>" type="button" class="btn btn-success" data-method="delete">Yes, I'm sure</a>
+        <a href="<%= admin_tag_path(@tag.id) %>" type="button" class="btn btn-success" data-method="delete">Yes, I'm sure</a>
       </div>
 
     </div>

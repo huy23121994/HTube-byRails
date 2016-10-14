@@ -2,10 +2,12 @@ Rails.application.routes.draw do
 
   root 'front_end#index'
 
-  resources :categories, path: '/admin/categories'
-  resources :tags, path: '/admin/tags'
-  resources :posts, path: '/admin/posts'
-  resources :users, path: '/admin/users', only: [:index, :create, :show, :edit, :update, :destroy]
+  namespace :admin do
+    resources :categories, path: 'categories'
+    resources :tags, path: 'tags'
+    resources :posts, path: 'posts'
+    resources :users, path: 'users', only: [:index, :create, :show, :edit, :update, :destroy]
+  end
 
   get '/sign-up' => 'users#new'
   get '/sign-in' => 'sessions#new'

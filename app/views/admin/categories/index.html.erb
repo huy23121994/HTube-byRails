@@ -7,7 +7,7 @@
 	        <div class="page-title">
 	            <div class="title_left">
 	                <h3>
-	                    Tags
+	                    Categories
 	                </h3>
 	            </div>
 	        </div>
@@ -17,7 +17,7 @@
 	            <div class="col-sm-4">
 	                <div class="x_panel">
 	                    <div class="x_title">
-	                        <h2>Add new <small>tag </small></h2>
+	                        <h2>Add new <small>category </small></h2>
 	                        <ul class="nav navbar-right panel_toolbox">
 	                            <li class="pull-right"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
 	                        </ul>
@@ -25,7 +25,7 @@
 	                    </div>
 	                    <div class="x_content">
 	                        <!-- content starts here -->
-	 							<%= render 'tags/form_new' %>
+	 							<%= render 'admin/categories/form_new' %>
 	                        <!-- content ends here -->
 	                    </div>
 	                </div>
@@ -33,7 +33,7 @@
 	            <div class="col-sm-8">
 	                <div class="x_panel">
 	                    <div class="x_title">
-	                        <h2>All <small>tags </small></h2>
+	                        <h2>All <small>category </small></h2>
 	                        <ul class="nav navbar-right panel_toolbox">
 	                            <li class="pull-right"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
 	                        </ul>
@@ -46,7 +46,7 @@
 						            <tr>
 						                <th>Name</th>
 						                <th>Slug</th>
-            							<th>Action</th>
+            							<th width="140px">Action</th>
 						            </tr>
 						        </thead>
 						        <tfoot>
@@ -57,23 +57,22 @@
 						            </tr>
 						        </tfoot>
 						        <tbody>
-						        	<% @tags.each do |tag| %>
+						        	<% @categories.each do |category| %>
 						            <tr>
+						                <td><a href="<%= edit_admin_category_path(category.id) %>" class="text-success">
+						                	<u> <%= category.category %></u>
+						                </a></td>
+						                <td><%= category.slug %></td>
 						                <td>
-						                	<a href="<%= edit_tag_path(tag.id) %>" class="text-success">
-						                		<u> <%= tag.tag_name %></u>
-						                	</a>
-						                </td>
-						                <td><%= tag.slug %></td>
-						                <td class="text-center">
-						                	<a href="<%= edit_tag_path(tag.id) %>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> View</a>
-						                	<a href="#" data-toggle="modal" data-id="<%= tag.id %>" data-target=".delete_comfirm" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>
+						                	<a href="<%= edit_admin_category_path(category.id) %>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> View</a>
+						                	<a href="#" data-toggle="modal" data-id="<%= category.id %>" data-target=".delete_comfirm" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>
 						                </td>
 						            </tr>
 						            <% end %>
 						        </tbody>
 						    </table>
 	                        <!-- content ends here -->
+
 		                    <!-- MODAL -->
 							<div class="modal fade delete_comfirm" tabindex="-1" role="dialog" aria-hidden="true">
 							  <div class="modal-dialog modal-sm">
@@ -105,12 +104,10 @@
 	    $(document).ready(function () {
 	    	//DataTable
 	    	$('#list-item').DataTable();
-
-	    	// For delete modal
 	    	$('a[data-target=".delete_comfirm"]').click(function(){
-	    		$('a[data-method="delete"]').attr('href','tags/' + $(this).data('id'));
+	    		$('a[data-method="delete"]').attr('href','/admin/categories/' + $(this).data('id'));
 	    	})
-
+	    	
 	    	<% if flash[:notice] %>
 				new PNotify({
 	              	title: 'Success',
@@ -123,5 +120,4 @@
 	    })
 	</script>
 <% end %>
-
-<% extends_layout "back_end/layouts/master" %>
+<% extends_layout "admin/layouts/master" %>

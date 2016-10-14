@@ -2,7 +2,7 @@ class TagsController < ApplicationController
 	before_action :signed_in_user
 	
 	def index
-		@tags = Tag.all
+		@tags = Tag.get_all_tags
 		@tag = Tag.new
 	end
 

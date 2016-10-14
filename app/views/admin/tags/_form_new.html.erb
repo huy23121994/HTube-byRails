@@ -1,5 +1,5 @@
  
-<%= form_for @tag, html:{:class => "form-horizontal form-label-left", 'data-parsley-validate' => ''} do |f| %>
+<%= form_for [:admin, @tag], html:{:class => "form-horizontal form-label-left", 'data-parsley-validate' => ''} do |f| %>
   	<div class="form-group">
     	<label class="control-label" for="first-name">Name <span class="required">*</span>
     	</label>
