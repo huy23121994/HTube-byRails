@@ -16,8 +16,10 @@ class Admin::UsersController < ApplicationController
 
 	def create
 		@user = User.create_user(user_create_params)
+		# abort @user.inspect
 		if !@user.errors.any?
-			redirect_to sign_in
+			flash[:danger] = "Please sign in"
+			redirect_to sign_in_path
 		else
 			render 'new'
 		end
